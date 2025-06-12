@@ -40,7 +40,7 @@ Your script should finish in **< 5 min** on a laptop (8 GB RAM).
 | Column                | Build rule                                                                               |
 | --------------------- | ---------------------------------------------------------------------------------------- |
 | `date_utc`            | `posted_date` truncated to `YYYY-MM-DD` (UTC)                                            |
-| `region_code`         | Map `work_country` → `NA`, `EU`, `AP`, `LA`  <br>*↳ Pick any sane mapping & document it* |
+| `region_code`         | Map `work_city` → `LA`, `NY`  <br>*↳ Pick any sane mapping & document it* |
 | `proj_type_code`      | Map `project_type` → `F` (film), `T` (TV/streaming), `C` (commercial), `V` (voice/other) |
 | `role_count_day`      | Number of rows in that bucket                                                            |
 | `lead_share_pct_day`  | `(Lead + Principal rows) ÷ role_count_day`, **1 dp**                                     |
