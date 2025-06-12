@@ -14,10 +14,10 @@ Every time one of our users sees a role notice, we record that breakdown as a si
 ```
 
 data/
-breakdowns\_sample.csv   # \~50–60 K raw breakdown rows (same schema we use in prod)
-build\_pulse.py           # <-- you create this script
-output/                  # <-- put your final daily\_pulse.csv here
-README.md                # (this file)
+breakdowns_sample.csv   # \1000 breakdown rows (same schema we use in prod)
+pulse.py                # <-- you create this script
+daily_pulse.csv         # <-- put your final daily_pulse.csv here
+README.md               # (this file)
 
 ````
 
@@ -29,8 +29,8 @@ Run:
 
 ```bash
 python build_pulse.py \
-       --input  data/breakdowns_sample.csv \
-       --output output/daily_pulse.csv
+       --input  breakdowns_sample.csv \
+       --output daily_pulse.csv
 ````
 
 Your script should finish in **< 5 min** on a laptop (8 GB RAM).
@@ -60,7 +60,7 @@ Sort by `date_utc, region_code, proj_type_code`.
 | ---------------------------------------- | ----------------------------------------------------------------------------------------- |
 | **Country→Region map**                   | Can you design & document a simple taxonomy?                                              |
 | **Project-type mapping**                 | Can you normalise messy categorical data?                                                 |
-| **Sentiment tool choice**                | Pragmatic ML instinct (TextBlob? HuggingFace? Your call)                                  |
+| **Sentiment tool choice**                | Pragmatic ML instinct (TextBlob? HuggingFace? OpenAI API ? Your call)                                  |
 | **Privacy touches**<br>(k-anon, Laplace) | Bonus points if you mention or add a small noise / bucket filter; not mandatory for pass. |
 | **No tests, no CI**                      | Code clarity & runnable script matter more than boilerplate.                              |
 
@@ -90,11 +90,8 @@ Sort by `date_utc, region_code, proj_type_code`.
 
 ## 🗒️  Your short explanation here
 
-*(replace this bullet list with \~3 lines on your mappings & choices)*
+*(replace this bullet list with your mappings & choices)*
 
 ```
 
 ---
-
-Copy-paste that README into your repo, drop the raw CSV, and candidates will know *exactly* what to do—and you’ll get code that shows their real world data-engineering chops.
-```
