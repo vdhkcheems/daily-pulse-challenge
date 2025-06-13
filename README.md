@@ -91,3 +91,21 @@ Sort by `date_utc, region_code, proj_type_code`.
 * Median rounding: `int(round(x / 25.0)) * 25`
 * For a quick sentiment baseline: `pip install textblob`
 * Want anonymization? Drop buckets `< 5` rows or add `np.random.laplace(0, 1)` to counts.
+
+## Note
+
+Custom region/project mappings from data uniques; used TextBlob polarity for sentiment analysis.
+
+## How to run
+
+1. Clone and setup a environment
+
+2. Install dependencies
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+3. Run
+  ```bash
+  python build_pulse.py --input breakdowns_sample.csv --output daily_pulse.csv
+  ```
