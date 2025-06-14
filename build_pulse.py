@@ -19,6 +19,7 @@ import pandas as pd
 import numpy as np
 from textblob import TextBlob
 import argparse
+# from transformers import pipeline
 import re
 from datetime import datetime
 import logging
@@ -26,6 +27,11 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# sentiment_pipeline = pipeline(
+#     "sentiment-analysis",
+#     model="distilbert-base-uncased-finetuned-sst-2-english"
+# )
 
 class CastingPulseBuilder:
     def __init__(self):
@@ -312,6 +318,28 @@ class CastingPulseBuilder:
             return blob.sentiment.polarity
         except:
             return 0.0
+        # """Calculate sentiment score using RoBERTa sentiment model."""
+        # if pd.isna(description_str) or not isinstance(description_str, str) or not description_str.strip():
+        #     return 0.0
+
+        # # Preprocess text
+        # def preprocess(text):
+        #     text = text.strip()
+        #     text = re.sub(r'\s+', ' ', text)
+        #     text = re.sub(r'http\S+', '', text)  # Remove URLs
+        #     return text
+
+        # try:
+        #     cleaned_text = preprocess(description_str)
+        #     result = sentiment_pipeline(cleaned_text)[0]
+        #     score = result['score']
+        #     label = result['label']
+
+        #     # Convert to -1 to +1 scale
+        #     return score if label == 'POSITIVE' else -score
+
+        # except Exception:
+        #     return 0.0
 
     def has_ai_theme(self, text_str):
         """Check if text contains AI-related keywords."""

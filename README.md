@@ -94,11 +94,11 @@ Sort by `date_utc, region_code, proj_type_code`.
 
 ## Note
 
-Custom region/project mappings from data uniques; used TextBlob polarity for sentiment analysis.
+Custom region/project mappings from data uniques; used TextBlob polarity for sentiment analysis. Tried with Huggingface BERT based models too but would cross the 5min constraint on a no gpu device.
 
 ## How to run
 
-1. Clone and setup a environment
+1. Clone and setup a virtual environment
 
 2. Install dependencies
   ```bash
