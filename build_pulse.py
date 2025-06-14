@@ -243,7 +243,8 @@ class CastingPulseBuilder:
         
         # AI-related keywords for theme detection
         self.ai_keywords = {
-            'ai', 'artificial intelligence', 'robot', 'android'
+            'ai', 'artificial intelligence', 'machine learning', 'neural network', 
+            'robot', 'android', 'chatbot', 'deep learning', 'computer vision'
         }
 
     def extract_city_from_location(self, location_str):
@@ -342,12 +343,19 @@ class CastingPulseBuilder:
         #     return 0.0
 
     def has_ai_theme(self, text_str):
-        """Check if text contains AI-related keywords."""
+        """Check if text contains AI-related keywords (as whole words)."""
         if pd.isna(text_str):
             return False
-        
+
         text_str = str(text_str).lower()
-        return any(keyword in text_str for keyword in self.ai_keywords)
+
+        for keyword in self.ai_keywords:
+            # Use word boundaries \b to match whole words
+            pattern = r'\b' + re.escape(keyword.lower()) + r'\b'
+            if re.search(pattern, text_str):
+                return True
+
+        return False
 
     def round_to_nearest_25(self, value):
         """Round value to nearest $25."""
